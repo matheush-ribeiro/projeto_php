@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Dev web Profissional.</h1>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre_nos">Sobre Nós</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc risus felis, feugiat quis maximus id, rhoncus
+            eget nisi. Pellentesque blandit auctor tempus.
+        </p>
+        <section id="inicio">
+            <h2>Início</h2>
+            <p>Bem-vindo à página inicial.</p>
+        </section>
+        <section id="sobre_nos">
+            <h2>Sobre Nós</h2>
+            <p>Informações sobre a empresa.</p>
+        </section>
+        <section id="servicos">
+            <h2>Serviços</h2>
+            <p>Serviços que prestamos.</p>
+        </section>
+        <section id="contato">
+
+            <h2>Contato</h2>
+            <p>Formas de entrar em contato.</p>
+            <p><a class="telw" href="tel:+5514996911488">WhatsApp: (14)99691-1488</a></p>
+            <p>Ou envie uma mensagem para nós.</p>
+
+            <form action="enviar.php" method="POST">
+                <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+                <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>Dev Web Profissional © 2025 - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
