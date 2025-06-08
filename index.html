@@ -11,13 +11,15 @@
 <body>
 
     <header>
-        <h1>Dev web Profissional.</h1>
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre_nos">Sobre Nós</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
+        <h1>Dev web Profissional</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre_nos">Sobre Nós</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
@@ -44,11 +46,12 @@
             <p><a class="telw" href="tel:+5514996911488">WhatsApp: (14)99691-1488</a></p>
             <p>Ou envie uma mensagem para nós.</p>
 
-            <form action="enviar.php" method="POST">
+            <form id="form-contato" action="enviar.php" method="POST">
                 <input type="text" id="nome" name="nome" placeholder="Nome" required>
                 <input type="email" id="email" name="email" placeholder="E-mail" required>
                 <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem" required></textarea>
-                <button type="submit">Enviar</button>
+                <button class="btn_enviar" type="submit">Enviar</button>
+                <div id="mensagem-status"></div>
             </form>
 
         </section>
@@ -57,6 +60,46 @@
     <footer>
         <p>Dev Web Profissional © 2025 - Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+    document.getElementById("form-contato").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const nome = form.nome.value.trim();
+        const email = form.email.value.trim();
+        const mensagem = form.mensagem.value.trim();
+        const status = document.getElementById("mensagem-status");
+
+        // Validação simples
+        if (!nome || !email || !mensagem) {
+            status.innerHTML = "<p style='color:red;'>Por favor, preencha todos os campos.</p>";
+            return;
+        }
+
+        // Validação de e-mail (formato básico)
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!emailValido) {
+            status.innerHTML = "<p style='color:red;'>Digite um e-mail válido.</p>";
+            return;
+        }
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            status.innerHTML = `<p style="color:black;">${data}</p>`;
+            form.reset();
+        })
+        .catch(error => {
+            status.innerHTML = `<p style="color:black;">Erro ao enviar: ${error}</p>`;
+        });
+    });
+</script>
 
 </body>
 
